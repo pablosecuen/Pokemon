@@ -1,6 +1,5 @@
 const { Pokemon, Type } = require("../db");
 const axios = require("axios");
-const { get } = require("../routes/PokemonRouter");
 
 const urlPokemon = `https://pokeapi.co/api/v2/pokemon`;
 const urlTypes = `https://pokeapi.co/api/v2/type`;
@@ -99,14 +98,6 @@ const findByIdApi = async (id) => {
   };
 };
 
-const findType = async (type) => {
-  const result = await Pokemon.findAll({
-    where: {
-      name: { [Op.iLike]: `%${type}%` },
-    },
-  });
-  return result;
-};
 
 //types controller
 
@@ -130,5 +121,4 @@ module.exports = {
   findAllPokemon,
   createPokemon,
   findById,
-  findType,
 };
