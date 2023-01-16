@@ -1,11 +1,14 @@
-const { Op } = require("sequelize");
 const { Pokemon, Type } = require("../db");
-
 const axios = require("axios");
+const { get } = require("../routes/PokemonRouter");
 
-//pokewachis for api
+const urlPokemon = `https://pokeapi.co/api/v2/pokemon`;
+const urlTypes = `https://pokeapi.co/api/v2/type`;
+
+//pokecontrollers for api
+
 const findAllApi = async () => {
-  const api = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=10");
+  const api = await axios.get(urlPokemon);
   const pokeUrl = [];
   api.data.results.map((r) => {
     pokeUrl.push(axios.get(r.url).then((response) => response.data));
@@ -25,21 +28,51 @@ const findAllApi = async () => {
           attack: p.stats[1].base_stat,
           defense: p.stats[2].base_stat,
           speed: p.stats[3].base_stat,
-          height: p.stats[4].base_stat,
-          weight: p.stats[1].base_stat,
+          height: p.height,
+          weight: p.weight,
         };
       })
   );
   return await pokeProps; //retornamos el objeto con sus propiedades
 };
 
-//pokewachis controllers for database
+const findByNameApi = async (name) => {
+  // lista
+  try {
+    const byName = await Pokemon.findOne({
+      where: {
+        name,
+      },
+    });
+
+    const response = await axios.get(urlPokemon + "/" + name);
+    return {
+      id: response.data.id,
+      name: response.data.name,
+      img: response.data.sprites.other.dream_world.front_default,
+      type: response.data.types.map((r) => r.type.name),
+      health: response.data.stats[0].base_stat,
+      attack: response.data.stats[1].base_stat,
+      defense: response.data.stats[2].base_stat,
+      speed: response.data.stats[3].base_stat,
+      height: response.data.height,
+      weight: response.data.weight,
+    };
+  } catch (error) {
+    return {
+      error: "Pokemon not found",
+    };
+  }
+};
+
+//pokecontrollers for database
 
 const createPokemon = async (name, hp, attack, defense, height, weight) => {
   return await Pokemon.create({ name, hp, attack, defense, height, weight });
 };
 
 const findAllPokemon = async () => {
+  let dbApi;
   const pokemons = await Pokemon.findAll();
   const pokemonsApi = await findAllApi();
   return [...pokemons, pokemonsApi];
@@ -50,13 +83,20 @@ const findById = async (id) => {
   return pokemon;
 };
 
-const findByName = async (name) => {
-  const result = await Pokemon.findAll({
-    where: {
-      name: { [Op.iLike]: `%${name}%` },
-    },
-  });
-  return result;
+const findByIdApi = async (id) => {
+  const url = await axios.get(urlPokemon + "/" + id);
+  return {
+    id: url.data.id,
+    name: url.data.name,
+    type: url.data.types.map((el) => el.type.name),
+    img: url.data.sprites.other.dream_world.front_default,
+    hp: url.data.stats[0].base_stat,
+    attack: url.data.stats[1].base_stat,
+    defense: url.data.stats[2].base_stat,
+    speed: url.data.stats[3].base_stat,
+    height: url.data.height,
+    weight: url.data.weight,
+  };
 };
 
 const findType = async (type) => {
@@ -68,10 +108,10 @@ const findType = async (type) => {
   return result;
 };
 
-//type controller
+//types controller
 
 const getTypesApi = async () => {
-  const response = await axios.get("https://pokeapi.co/api/v2/type");
+  const response = await axios.get(urlTypes);
   const types = response.data.results;
   const typeNames = [];
   for (let type of types) {
@@ -84,10 +124,11 @@ const getTypesApi = async () => {
 };
 
 module.exports = {
+  findByIdApi,
+  findByNameApi,
   getTypesApi,
   findAllPokemon,
   createPokemon,
   findById,
-  findByName,
   findType,
 };

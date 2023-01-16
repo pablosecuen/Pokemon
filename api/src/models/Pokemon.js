@@ -55,15 +55,3 @@ module.exports = (sequelize) => {
   });
 };
 
-// [ ] Pokemon con las siguientes propiedades:
-// ID (Número de Pokemon) * : No puede ser un ID de un pokemon ya existente en la API pokeapi
-// Nombre *
-// Vida
-// Ataque
-// Defensa
-// Velocidad
-// Altura
-// Peso
-// [ ] Tipo con las siguientes propiedades:
-// ID
-// Nombre
