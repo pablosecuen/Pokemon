@@ -3,11 +3,10 @@ import {
   DivName,
   Pattack,
   Pdefense,
-  Pheight,
   Pname,
   Ptype,
-  Pweight,
 } from "./styled-card";
+
 import { StyledImg } from "../CardsContainer/StyledCardContainer";
 
 export function Card(props) {

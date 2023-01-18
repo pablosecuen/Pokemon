@@ -1,13 +1,18 @@
 import styled from "styled-components";
+import img from "../../Assets/leaf.png";
 
 export const CardDiv = styled.div`
+  background-image: url(${img});
+  background-size: contain;
   display: block;
   justify-content: space-evenly;
-  margin-top: 20px;
+  margin-top: 30px;
+  margin-left: 15px;
+  margin-right: 15px;
   border-radius: 10px;
   height: 350px;
   width: 250px;
-  border: 1px solid red;
+  box-shadow: 6px 6px 7px #252525;
 `;
 
 export const DivName = styled.div`

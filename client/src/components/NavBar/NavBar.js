@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 export default function NavBar() {
   return (
     <Bar>
-      <Li>
         <Link to="/home">
           <HomeAbout>HOME</HomeAbout>
         </Link>
@@ -17,7 +16,6 @@ export default function NavBar() {
         <Link to="/create">
           <HomeAbout>CREATE YOUR POKEMON</HomeAbout>
         </Link>
-      </Li>
     </Bar>
   );
 }

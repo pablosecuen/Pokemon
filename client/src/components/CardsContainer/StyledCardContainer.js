@@ -13,4 +13,12 @@ export const StyledCardContainer = styled.div`
 `;
 export const StyledImg = styled.img`
   max-width: 200px;
+  min-width: 160px;
+  max-height: 280px;
+  min-height: 250px;
+  margin-top: 20px;
+  transition: all 0.5s ease-in-out;
+  &:hover {
+    transform: scale(1.35);
+  }
 `;
