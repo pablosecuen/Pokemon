@@ -35,7 +35,7 @@ const findAllApi = async () => {
   return await pokeProps; //retornamos el objeto con sus propiedades
 };
 
-const findByNameApi = async (name) => {
+const findByName = async (name) => {
   // lista
   try {
     const byName = await Pokemon.findOne({
@@ -74,7 +74,7 @@ const findAllPokemon = async () => {
   let dbApi;
   const pokemons = await Pokemon.findAll();
   const pokemonsApi = await findAllApi();
-  return [...pokemons, pokemonsApi];
+  return [...pokemons, ...pokemonsApi];
 };
 
 const findById = async (id) => {
@@ -98,7 +98,6 @@ const findByIdApi = async (id) => {
   };
 };
 
-
 //types controller
 
 const getTypesApi = async () => {
@@ -116,7 +115,7 @@ const getTypesApi = async () => {
 
 module.exports = {
   findByIdApi,
-  findByNameApi,
+  findByName,
   getTypesApi,
   findAllPokemon,
   createPokemon,

@@ -28,7 +28,7 @@ const createPokemonHandler = async (req, res) => {
 const getPokemonHandler = async (req, res) => {
   const { name } = req.query;
 
-  const results = name ? await findByNameApi(name) : await findAllPokemon();
+  const results = name ? await findByName(name) : await findAllPokemon();
 
   res.status(200).json(results);
 };
