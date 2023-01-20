@@ -9,6 +9,14 @@ module.exports = (sequelize) => {
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
     },
+
+    type: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
+      validate: {
+        len: [1, 20],
+      },
+    },
+
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -54,4 +62,3 @@ module.exports = (sequelize) => {
     },
   });
 };
-

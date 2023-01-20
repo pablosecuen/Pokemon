@@ -1,18 +1,18 @@
 const {
   createPokemon,
   findAllPokemon,
-  findByNameApi,
+  findByName,
   findByIdApi,
   findById,
 } = require("../Controllers/Controllers");
 
 const createPokemonHandler = async (req, res) => {
-  console.log("tratando");
-  const { name, hp, attack, defense, height, weight } = req.body;
+  const { name, type, hp, attack, defense, height, weight } = req.body;
 
   try {
     const newPokemon = await createPokemon(
       name,
+      type,
       hp,
       attack,
       defense,

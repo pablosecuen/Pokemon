@@ -10,9 +10,8 @@ import {
 import { StyledImg } from "../CardsContainer/StyledCardContainer";
 
 export function Card(props) {
-  console.log(props);
   return (
-    <CardDiv>
+    <CardDiv type={props.type[0]}>
       <DivName>
         <Pname>{props.name}</Pname>
         <Ptype>{props.type}</Ptype>

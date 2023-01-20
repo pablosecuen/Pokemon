@@ -10,6 +10,5 @@ export const Container = styled.div`
   background-size: 100% 100%;
   background-repeat: no-repeat;
   box-sizing: border-box;
- 
 `;
 export const StyledContainer = styled.div``;

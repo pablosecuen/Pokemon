@@ -1,12 +1,12 @@
 import "./App.css";
 import { Switch, Route, useLocation } from "react-router-dom";
-import Landing from "../src/Pages/Landing/Landing";
-import Home from "../src/Pages/Home/Home";
+import Landing from "./Pages/Landing/Landing";
+import Home from "./Pages/Home/Home";
 import Detail from "./Pages/Detail/Detail";
-import Create from "../src/Pages/Create/Create";
+import Create from "./Pages/Create/Create";
 import NavBar from "./components/NavBar/NavBar";
 
-function App() {
+export default function App() {
   const { pathname } = useLocation();
 
   return (
@@ -21,5 +21,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

@@ -1,6 +1,9 @@
 .App {
-
   text-align: center;
+  position: relative;
+  width: 100%;
+  height: 500px;
+  border: 1px white;
 }
 
 .App-logo {
@@ -9,6 +12,12 @@
 }
 
 
+.PokeLogo {
+  position:relative;
+  background-image: url("./Assets/logoconbg-01.png") ;
+  min-height: 50px;
+  width: 250px ;
+}
 
 
 

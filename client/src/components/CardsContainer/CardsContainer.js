@@ -1,21 +1,12 @@
 import Card from "../Card/Card";
-import { useEffect } from "react";
-import { connect, useDispatch, useSelector } from "react-redux";
-import { getPokemons } from "../../Redux/Actions/Actions";
+import { useSelector } from "react-redux";
 
-
-const CardsContainer = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getPokemons());
-  }, []);
-
-  const pokemons = useSelector((state) => state?.pokemons);
+export default function CardsContainer() {
+  const pokemons = useSelector((state) => state?.filteredByName);
+  //el componente mira al estado global para poder acceder a la info
   return (
     <>
       {pokemons?.map((p) => {
-        console.log(pokemons);
         return (
           <Card
             key={p.id}
@@ -32,12 +23,4 @@ const CardsContainer = () => {
       })}
     </>
   );
-};
-
-const mapStateToProps = (state) => {
-  return {
-    pokemons: state.Pokemons,
-  };
-};
-
-export default connect(mapStateToProps, { getPokemons })(CardsContainer);
+}

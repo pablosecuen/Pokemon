@@ -1,8 +1,11 @@
-export function Detail() {
+import { DetailContainer, DetailBackground } from "./styledDetail";
+
+function Detail() {
   return (
-    <div>
-      <h1>details</h1>
-    </div>
+    <DetailBackground>
+      <DetailContainer>
+      </DetailContainer>
+    </DetailBackground>
   );
 }
 

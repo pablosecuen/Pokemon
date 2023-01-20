@@ -1,9 +1,32 @@
 import styled from "styled-components";
-import img from "../../Assets/leaf.png";
+import fire from "../../Assets/fire.png";
+import flying from "../../Assets/fire.png";
+import grass from "../../Assets/leaf.png";
+import fight from "../../Assets/fight.png";
+import normal from "../../Assets/normal.png";
+import poison from "../../Assets/poison.png";
+import electric from "../../Assets/electric.png";
+import bug from "../../Assets/electric.png";
+import water from "../../Assets/water.png";
+import dragon from "../../Assets/fight.png";
+
+const typeToImage = {
+  fire,
+  grass,
+  fight,
+  normal,
+  poison,
+  electric,
+  bug,
+  water,
+  dragon,
+  flying,
+};
 
 export const CardDiv = styled.div`
-  background-image: url(${img});
+  background-image: url(${({ type }) => typeToImage[type]});
   background-size: contain;
+  opacity: 95%;
   display: block;
   justify-content: space-evenly;
   margin-top: 30px;

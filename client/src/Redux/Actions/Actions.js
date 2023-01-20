@@ -1,18 +1,19 @@
 import axios from "axios";
 
-export const ORDERASC = "ORDERASC";
-export const ORDERDES = "ORDERDES";
-export const SEARCHBYNAME = "SEARCHBYNAME";
-export const SEARCHBYID = "SEARCHBYID";
-export const GETTYPES = "GETTYPES";
+export const GET_POKEMONS = "GET_POKEMONS";
+export const ORDER_ASC = "ORDER_ASC";
+export const ORDER_DES = "ORDER_DES";
+export const SEARCH_BY_NAME = "SEARCH_BY_NAME";
+export const SEARCH_BY_ID = "SEARCH_BY_ID";
+export const SEARCH_BY_MULTIPLE_TYPES = "SEARCH_BY_MULTIPLE_TYPES"; //action para filtros mixtos
+export const SEARCH_BY_TYPE = "SEARCH_BY_TYPE";
 export const CREATE = "CREATE";
-export const GETPOKEMON = "GETPOKEMON";
 
 export const getPokemons = () => {
   return async (dispatch) => {
     const response = await axios.get("http://localhost:3001/pokemons");
     dispatch({
-      type: GETPOKEMON,
+      type: GET_POKEMONS,
       payload: response.data,
     });
   };
@@ -20,42 +21,56 @@ export const getPokemons = () => {
 
 export const orderAsc = (pokemon) => {
   return {
-    type: ORDERASC,
+    type: ORDER_ASC,
     payload: pokemon,
   };
 };
 
 export const orderDes = (pokemon) => {
   return {
-    type: ORDERDES,
+    type: ORDER_DES,
     payload: pokemon,
   };
 };
 
-export const searchByName = async (name) => {
-  const response = await axios.get(`http://localhost:3001/pokemons/${name}`);
-  return {
-    type: SEARCHBYNAME,
-    payload: response.data,
+export const searchByName = (name) => {
+  return async (dispatch) => {
+    const response = await axios.get(
+      `http://localhost:3001/pokemons?name=${name}`
+    );
+    console.log(response.data.name);
+    dispatch({
+      type: SEARCH_BY_NAME,
+      payload: response.data.name,
+    });
   };
 };
 
-export const searchById = async (id) => {
-  const response = await axios.get(`http://localhost:3001/pokemons/${id}`);
-  return {
-    type: SEARCHBYID,
-    payload: response.data,
+export const searchById = (id) => {
+  return async (dispatch) => {
+    const response = await axios.get(`http://localhost:3001/pokemons/${id}`);
+    dispatch({ type: SEARCH_BY_ID, payload: response.data });
   };
 };
 
-export const getTypes = async (types) => {
-  const response = await axios.get(`http://localhost:3001/pokemons/${types}`);
+export const searchByMultipleTypesFilter = (types1, types2) => {
   return {
-    type: GETTYPES,
-    payload: response.data,
+    type: SEARCH_BY_MULTIPLE_TYPES,
+    payload: { types1, types2 },
   };
 };
 
+
+
+export const searchByType = (type) => {
+  if (!type || typeof type !== 'string' || type.trim().length === 0) {
+    return { type: '' };
+  }
+  return {
+    type: SEARCH_BY_TYPE,
+    payload: type,
+  };
+};
 export const create = (pokemon) => {
   //pokemon es igual a obj {name, type, hp, defense, attack, heigt, weight}
   return {

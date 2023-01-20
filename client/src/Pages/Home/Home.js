@@ -1,21 +1,27 @@
-import { Container, StyledContainer } from "./styled-home";
+import { Container } from "./styled-home";
 import { StyledCardContainer } from "../../components/CardsContainer/StyledCardContainer";
-
-// import { useEffect } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import * as actions from "../../Redux/Actions/Actions";
-
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getPokemons } from "../../Redux/Actions/Actions";
 import CardsContainer from "../../components/CardsContainer/CardsContainer";
+import SearchBar from "../../components/Seachbar/SearchBar";
 
-export function Home() {
+export default function Home() {
+  const dispatch = useDispatch(); // home hace el dispatch al estado global al montarse
+  //pero luego de eso ese estado solo es requerido por cards container
+
+  useEffect(() => {
+    dispatch(getPokemons());
+  }, []);
+
   return (
-    <Container>
-      <StyledCardContainer>
-        <CardsContainer></CardsContainer>
-        {/* esta va a ser la searchbar */}
-      </StyledCardContainer>
-    </Container>
+    <>
+      <Container>
+        <SearchBar></SearchBar>
+        <StyledCardContainer>
+          <CardsContainer></CardsContainer>
+        </StyledCardContainer>
+      </Container>
+    </>
   );
 }
-
-export default Home;

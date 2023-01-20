@@ -1,70 +1,100 @@
 import {
-  ORDERASC,
-  ORDERDES,
-  SEARCHBYNAME,
-  SEARCHBYID,
-  // CREATE,
-  GETTYPES,
-  GETPOKEMON,
+  ORDER_ASC,
+  ORDER_DES,
+  SEARCH_BY_NAME,
+  SEARCH_BY_ID,
+  SEARCH_BY_TYPE,
+  GET_POKEMONS,
+  CREATE,
 } from "../Actions/Actions";
 
 const initialState = {
   filteredByName: [],
   filteredByType: [],
+  filterById: [],
+  types: [
+    "normal",
+    "fighting",
+    "poison",
+    "ground",
+    "rock",
+    "bug",
+    "ghost",
+    "steel",
+    "fire",
+    "water",
+    "grass",
+    "electric",
+    "psychic",
+    "ice",
+    "dragon",
+    "dark",
+    "fairy",
+    "unknown",
+    "shadow",
+  ],
   pokemons: [],
 };
 
 const myPokemons = (state = initialState, actions) => {
   switch (actions.type) {
-    case GETPOKEMON:
+    case GET_POKEMONS:
       return {
         ...state,
         pokemons: actions.payload,
+        filteredByName: actions.payload,
       };
 
-    case ORDERASC:
+    case ORDER_ASC:
       return {
         ...state,
         pokemons: state.pokemons.sort((a, b) => a - b === actions.payload),
       };
 
-    case ORDERDES:
+    case ORDER_DES:
       return {
         ...state,
         pokemons: state.pokemons.sort((a, b) => b - a === actions.payload),
       };
 
-    case SEARCHBYNAME:
+    case SEARCH_BY_NAME:
       return {
         ...state,
-        pokemons: state.pokemons.filter(
+        filteredByName: state.pokemons.filter(
           (pokemon) => pokemon.name === actions.payload
         ),
       };
-    case SEARCHBYID:
+    case SEARCH_BY_ID:
       return {
         ...state,
-        pokemons: state.pokemons.filter(
+        filterById: state.pokemons.filter(
           (pokemon) => pokemon.id === actions.payload
         ),
       };
 
-    case GETTYPES: {
+    case SEARCH_BY_TYPE:
+      console.log(state.pokemons);
       return {
         ...state,
-        types: actions.payload,
+        pokemons: state.pokemons.filter(
+          (pokemon) =>
+            Array.isArray(pokemon.types) &&
+            pokemon.types.some((type) => type === actions.payload)
+        ),
       };
-    }
+
+    case CREATE:
+      return {
+        ...state,
+        pokemons: [...state.pokemons, actions.payload],
+      };
 
     default: {
       return {
         ...state,
       };
     }
-
   }
 };
-
-
 
 export default myPokemons;

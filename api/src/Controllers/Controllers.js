@@ -66,8 +66,24 @@ const findByName = async (name) => {
 
 //pokecontrollers for database
 
-const createPokemon = async (name, hp, attack, defense, height, weight) => {
-  return await Pokemon.create({ name, hp, attack, defense, height, weight });
+const createPokemon = async (
+  name,
+  type,
+  hp,
+  attack,
+  defense,
+  height,
+  weight
+) => {
+  return await Pokemon.create({
+    name,
+    type,
+    hp,
+    attack,
+    defense,
+    height,
+    weight,
+  });
 };
 
 const findAllPokemon = async () => {
@@ -105,10 +121,15 @@ const getTypesApi = async () => {
   const types = response.data.results;
   const typeNames = [];
   for (let type of types) {
-    const newType = await Type.create({
-      name: type.name,
-    });
-    typeNames.push(newType);
+    let existingType = await Type.findOne({ where: { name: type.name } });
+    if (existingType) {
+      typeNames.push(existingType);
+    } else {
+      const newType = await Type.create({
+        name: type.name,
+      });
+      typeNames.push(newType);
+    }
   }
   return typeNames;
 };
