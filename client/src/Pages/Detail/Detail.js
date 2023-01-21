@@ -10,6 +10,7 @@ import {
   PokedexDisplay2,
   PokedexLightBlue,
   PokedexLightYellow,
+  H3,
 } from "./styledDetail";
 
 function Detail() {
@@ -32,15 +33,15 @@ function Detail() {
         <DetailContainer>
           <PokedexDisplay1 src={pokemon.img} />
           <PokedexDisplay2>
-            {pokemon.type}
-            {pokemon.name}
-            {pokemon.id}
-            {pokemon.attack}
-            {pokemon.defense}
-            {pokemon.hp}
-            {pokemon.type}
-            {pokemon.height}
-            {pokemon.weight}
+            <H3>Type: {pokemon.type}</H3>
+            <H3>Name: {pokemon.name}</H3>
+            <H3>Id: {pokemon.id}</H3>
+            <H3>Attack: {pokemon.attack}</H3>
+            <H3>Defense: {pokemon.defense}</H3>
+            <H3>Hp: {pokemon.hp}</H3>
+            <H3>Type: {pokemon.type}</H3>
+            <H3>Height: {pokemon.height}</H3>
+            <H3>Weight: {pokemon.weight}</H3>
           </PokedexDisplay2>
           <PokedexLightBlue></PokedexLightBlue>
           <PokedexLightYellow></PokedexLightYellow>

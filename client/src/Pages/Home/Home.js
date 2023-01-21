@@ -3,9 +3,9 @@ import { StyledCardContainer } from "../../components/CardsContainer/StyledCardC
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getPokemons } from "../../Redux/Actions/Actions";
+import  Pagination  from "../../components/Pagination/Pagination";
 import CardsContainer from "../../components/CardsContainer/CardsContainer";
 import SearchBar from "../../components/Seachbar/SearchBar";
-
 
 export default function Home() {
   const dispatch = useDispatch(); // home hace el dispatch al estado global al montarse
@@ -16,14 +16,12 @@ export default function Home() {
   }, []);
 
   return (
-    <>
-      <Container>
-        <SearchBar></SearchBar>
-
-        <StyledCardContainer>
-          <CardsContainer></CardsContainer>
-        </StyledCardContainer>
-      </Container>
-    </>
+    <Container>
+      <SearchBar></SearchBar>
+        <Pagination></Pagination>
+      <StyledCardContainer>
+        <CardsContainer></CardsContainer>
+      </StyledCardContainer>
+    </Container>
   );
 }

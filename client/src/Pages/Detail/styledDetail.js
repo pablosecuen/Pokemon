@@ -25,21 +25,25 @@ export const DetailContainer = styled.div`
 export const PokedexDisplay1 = styled.img`
   display: flex;
   position: absolute;
-  right: 55%;
-  top: 39%;
-  height: 17%;
+  right: 55.2%;
+  top: 42%;
+  height: 12%;
   width: 11%;
-  border: 5px yellow solid;
 `;
 
 export const PokedexDisplay2 = styled.div`
-  display: flex;
+  text-align: left;
+  display: block;
   position: absolute;
-  right: 32%;
-  top: 31%;
-  height: 21%;
+  right: 31%;
+  top: 32.5%;
+  height: 20%;
   width: 14%;
-  border: 5px yellow solid;
+`;
+
+export const H3 = styled.p`
+  font-family: "8bit";
+  color: green;
 `;
 
 export const PokedexLightBlue = styled.div`
@@ -111,10 +115,11 @@ export const PokedexLightBlue = styled.div`
 export const PokedexLightYellow = styled.div`
   display: flex;
   position: absolute;
+  background-color: transparent;
   height: 25px;
   width: 25px;
-  right: 32.7%;
-  top: 71.5%;
+  right: 32.6%;
+  top: 71.7%;
   border-radius: 50%;
   & {
     opacity: 1;

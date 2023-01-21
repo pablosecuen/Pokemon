@@ -68,4 +68,5 @@ export const FilterModalDiv = styled.div`
   position: absolute;
   margin-top: 22px;
   opacity: 90%;
+  
 `;

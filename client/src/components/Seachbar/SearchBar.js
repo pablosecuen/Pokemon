@@ -64,7 +64,7 @@ export default function SearchBar() {
           placeholder="Search by name"
           onChange={onChange}
         />
-        <Button>Filter by name</Button>
+        <Button>FILTER BY NAME</Button>
 
         <Button onClick={toggleModal}> filter by tipe</Button>
         <FilterModal active={modalActive}>
