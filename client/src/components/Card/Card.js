@@ -1,3 +1,5 @@
+import { useHistory } from "react-router-dom";
+
 import {
   CardDiv,
   DivName,
@@ -10,6 +12,12 @@ import {
 import { StyledImg } from "../CardsContainer/StyledCardContainer";
 
 export function Card(props) {
+  const history = useHistory();
+
+  function handleClick() {
+    history.push(`/detail/${props.name}`, { state: { pokemon: props } });
+  }
+
   return (
     <CardDiv type={props.type[0]}>
       <DivName>
@@ -17,7 +25,7 @@ export function Card(props) {
         <Ptype>{props.type}</Ptype>
       </DivName>
       <div>
-        <StyledImg src={props.img} />
+        <StyledImg src={props.img} onClick={handleClick} />
       </div>
       <div>
         <Pattack>Attack: {props.attack}</Pattack>

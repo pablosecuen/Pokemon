@@ -10,10 +10,12 @@ export default function validate(create) {
 
   if (!nameRegex.test(create.name)) return "formato de nombre invalido";
   if (!attackRegex.test(create.attack)) return "el ataque debe ser de 0 a 255";
-  if (!hpRegex.test(create.hp)) return "el ataque debe ser de 0 a 255";
-  if (!defenseRegex.test(create.defense)) return "defensa debe ser de 0 a 255";
-  if (!weightRegex.test(create.weight)) return "defensa debe ser de 0 a 255";
-  if (!heightRegex.test(create.height)) return "defensa debe ser de 0 a 255";
-  if (!typeRegex.test(create.type)) return "el tipo debe ser correctamente asignado";
+  if (!hpRegex.test(create.hp)) return "el hp debe ser de 0 a 255";
+  if (!defenseRegex.test(create.defense))
+    return "la defensa debe ser de 0 a 255";
+  if (!weightRegex.test(create.weight)) return "el peso debe ser de 0 a 255";
+  if (!heightRegex.test(create.height)) return "la altura debe ser de 0 a 255";
+  if (!typeRegex.test(create.type))
+    return "el tipo debe ser correctamente asignado";
   return "valido";
 }

@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import validate from "./validate";
 
 export default function Create() {
-  const types = useSelector((state) => state.types);
+  const types = useSelector((state) => state.creatorTypes);
   const [create, setCreate] = useState({
     name: "",
     hp: "",
@@ -24,7 +24,6 @@ export default function Create() {
     } else {
       setCreate({ ...create, [property]: value });
     }
-    console.log(create.type);
   };
 
   const submitHandler = (event) => {
@@ -53,7 +52,7 @@ export default function Create() {
         });
     }
   };
-
+  console.log(types);
   return (
     <form onSubmit={submitHandler}>
       <div>
@@ -113,9 +112,9 @@ export default function Create() {
       <div>
         <select onChange={changeHandler} name="type">
           <option hidden>seleccionar tipo</option>
-          {types.map((t) => (
-            <option value={t}>{t}</option>
-          ))}
+          {types &&
+            types.length > 0 &&
+            types.map((t) => <option value={t}>{t}</option>)}
         </select>
       </div>
       ;<button type="submit">submit</button>

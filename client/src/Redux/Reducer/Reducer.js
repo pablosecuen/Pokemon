@@ -3,35 +3,39 @@ import {
   ORDER_DES,
   SEARCH_BY_NAME,
   SEARCH_BY_ID,
-  SEARCH_BY_TYPE,
+  FILTER_BY_TYPE,
   GET_POKEMONS,
+  GET_TYPES,
   CREATE,
 } from "../Actions/Actions";
 
 const initialState = {
-  filteredByName: [],
+  pokemonDetail: [],
+  filteredPokemons: [],
   filteredByType: [],
   filterById: [],
-  types: [
-    "normal",
-    "fighting",
-    "poison",
-    "ground",
-    "rock",
-    "bug",
-    "ghost",
-    "steel",
+  type: [],
+  creatorTypes: [
     "fire",
-    "water",
-    "grass",
-    "electric",
-    "psychic",
-    "ice",
+    "bug",
+    " dark",
     "dragon",
-    "dark",
+    "electric",
     "fairy",
-    "unknown",
+    "fighting",
+    "flying",
+    "ghost",
+    "grass",
+    "ground",
+    "ice",
+    "normal",
+    "poison",
+    "psychic",
+    "rock",
     "shadow",
+    "steel",
+    "unknown",
+    "water",
   ],
   pokemons: [],
 };
@@ -42,7 +46,7 @@ const myPokemons = (state = initialState, actions) => {
       return {
         ...state,
         pokemons: actions.payload,
-        filteredByName: actions.payload,
+        filteredPokemons: actions.payload,
       };
 
     case ORDER_ASC:
@@ -60,27 +64,29 @@ const myPokemons = (state = initialState, actions) => {
     case SEARCH_BY_NAME:
       return {
         ...state,
-        filteredByName: state.pokemons.filter(
+        filteredPokemons: state.pokemons.filter(
           (pokemon) => pokemon.name === actions.payload
         ),
       };
+
     case SEARCH_BY_ID:
       return {
         ...state,
-        filterById: state.pokemons.filter(
-          (pokemon) => pokemon.id === actions.payload
+        pokemonDetail: actions.payload,
+      };
+
+    case FILTER_BY_TYPE:
+      return {
+        ...state,
+        filteredPokemons: state.pokemons.filter((pokemon) =>
+          pokemon.type.includes(actions.payload)
         ),
       };
 
-    case SEARCH_BY_TYPE:
-      console.log(state.pokemons);
+    case GET_TYPES:
       return {
         ...state,
-        pokemons: state.pokemons.filter(
-          (pokemon) =>
-            Array.isArray(pokemon.types) &&
-            pokemon.types.some((type) => type === actions.payload)
-        ),
+        type: actions.payload,
       };
 
     case CREATE:

@@ -2,7 +2,7 @@ import Card from "../Card/Card";
 import { useSelector } from "react-redux";
 
 export default function CardsContainer() {
-  const pokemons = useSelector((state) => state?.filteredByName);
+  const pokemons = useSelector((state) => state?.filteredPokemons);
   //el componente mira al estado global para poder acceder a la info
   return (
     <>

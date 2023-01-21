@@ -6,7 +6,8 @@ export const ORDER_DES = "ORDER_DES";
 export const SEARCH_BY_NAME = "SEARCH_BY_NAME";
 export const SEARCH_BY_ID = "SEARCH_BY_ID";
 export const SEARCH_BY_MULTIPLE_TYPES = "SEARCH_BY_MULTIPLE_TYPES"; //action para filtros mixtos
-export const SEARCH_BY_TYPE = "SEARCH_BY_TYPE";
+export const FILTER_BY_TYPE = "FILTER_BY_TYPE";
+export const GET_TYPES = "GET_TYPES";
 export const CREATE = "CREATE";
 
 export const getPokemons = () => {
@@ -60,14 +61,20 @@ export const searchByMultipleTypesFilter = (types1, types2) => {
   };
 };
 
-
+export const getTypes = () => {
+  return async function (dispatch) {
+    const apiData = await axios.get("http://localhost:3001/types");
+    const type = apiData.data;
+    dispatch({
+      type: GET_TYPES,
+      payload: type,
+    });
+  };
+};
 
 export const searchByType = (type) => {
-  if (!type || typeof type !== 'string' || type.trim().length === 0) {
-    return { type: '' };
-  }
   return {
-    type: SEARCH_BY_TYPE,
+    type: FILTER_BY_TYPE,
     payload: type,
   };
 };
