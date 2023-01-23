@@ -1,5 +1,4 @@
 import { useHistory } from "react-router-dom";
-
 import {
   CardDiv,
   DivName,
@@ -8,7 +7,6 @@ import {
   Pname,
   Ptype,
 } from "./styled-card";
-
 import { StyledImg } from "../CardsContainer/StyledCardContainer";
 
 export function Card(props) {

@@ -1,17 +1,14 @@
 import styled from "styled-components";
 
 export const Form = styled.form`
-  position: relative;
-  display: inline-block;
-  justify-content: space-between;
+  justify-content: center;
 `;
 
 export const SearchBarStyle = styled.div`
-  display: flex;
+  margin-left: 50px;
   justify-content: center;
   align-items: center;
   position: absolute;
-  right: -1500px;
   margin-top: 30px;
   background-color: yellow;
   border-radius: 50px;
@@ -45,12 +42,7 @@ export const Button = styled.button`
   :hover {
     cursor: pointer;
   }
-  /* box-shadow: 0px 5px 0px 0px ; */
   text-shadow: 4px 4px 10px #252525;
-  /* :active {
-    transform: translateY(5px);
-    box-shadow: 0px 0px 0px 0px yellow;
-  }*/
 `;
 
 export const FilterContainter = styled.div`
@@ -67,7 +59,7 @@ export const StyledInput = styled.input`
   border-bottom: 2px solid red;
 `;
 
-export const H3 = styled.h3`
+export const H3 = styled.p`
   margin-top: 20px;
   margin-bottom: 00px;
   font-family: "Press Start 2P";

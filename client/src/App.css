@@ -49,3 +49,8 @@
   font-family: "8bit";
   src: url("./Assets/Fonts/8-BITWONDER.TTF");
 }
+
+@font-face {
+  font-family: "pokemon";
+  src: url("./Assets/Fonts/Pokemon.ttf");
+}

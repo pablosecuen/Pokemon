@@ -18,9 +18,9 @@ export default function Home() {
   return (
     <Container>
       <SearchBar></SearchBar>
-        <Pagination></Pagination>
       <StyledCardContainer>
-        <CardsContainer></CardsContainer>
+        <Pagination></Pagination>
+        {/* <CardsContainer></CardsContainer> */}
       </StyledCardContainer>
     </Container>
   );

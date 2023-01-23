@@ -49,9 +49,9 @@ export const Icon = styled.button`
   height: 70px;
   background-color: transparent;
   background-size: contain;
-  box-shadow: 6px 6px 1px black;
+  box-shadow: 6px 6px 1px #252525;
   border: none;
-  margin:5px;
+  margin: 5px;
   border-radius: 50%;
 
   background-image: url(${({ type }) => typeToImage[type]});
@@ -65,8 +65,7 @@ export const FilterModalDiv = styled.div`
   background-color: yellow;
   position: absolute;
   border-radius: 30px;
-  position: absolute;
-  margin-top: 22px;
+  margin-top: 610px;
   opacity: 90%;
-  
+  box-shadow: 6px 6px 1px #252525;
 `;

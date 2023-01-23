@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import fire from "../../Assets/fire.png";
 import flying from "../../Assets/fire.png";
 import grass from "../../Assets/leaf.png";
@@ -23,19 +24,18 @@ const typeToImage = {
   flying,
 };
 
+
 export const CardDiv = styled.div`
   background-image: url(${({ type }) => typeToImage[type]});
   background-size: contain;
-  opacity: 95%;
   display: block;
   justify-content: space-evenly;
-  margin-top: 30px;
-  margin-left: 15px;
-  margin-right: 15px;
+  margin: 30px;
   border-radius: 10px;
-  height: 350px;
-  width: 250px;
+  height: 320px;
+  width: 210px;
   box-shadow: 6px 6px 7px #252525;
+  position: relative;
 `;
 
 export const DivName = styled.div`
@@ -44,20 +44,49 @@ export const DivName = styled.div`
 `;
 
 export const Pname = styled.p`
-  border: 1px white solid;
-  max-width: 70px;
+  padding-right: 12px;
+  padding-left: 12px;
+  background-color: #cccccc;
+  border-radius: 00px 50px 0px 50px;
+  border: #252525 solid 2px;
+  position: absolute;
   display: inline;
+  left: 10px;
+  top: 8px;
 `;
 export const Ptype = styled.p`
-  border: 1px white solid;
-  max-width: 90px;
+  padding-right: 4px;
+  padding-left: 4px;
+  background-color: #cccccc;
+  border-radius: 50px;
+  border: #252525 solid 2px;
+  position: absolute;
   display: inline;
+  right: 10px;
+  top: 8px;
 `;
 
 export const Pattack = styled.p`
+  padding-right: 12px;
+  padding-left: 12px;
+  background-color: #cccccc;
+  border-radius: 00px 50px 0px 50px;
+  border: #252525 solid 2px;
+  position: absolute;
   display: inline;
+  left: 3px;
+  bottom: 22px;
 `;
 
 export const Pdefense = styled.p`
+  text-align: center;
+  padding-right: 12px;
+  padding-left: 12px;
+  border-radius: 00px 50px 0px 50px;
+  background-color: #cccccc;
+  border: #252525 solid 2px;
+  position: absolute;
   display: inline;
+  right: 2px;
+  bottom: 22px;
 `;

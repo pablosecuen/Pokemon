@@ -1,22 +1,21 @@
 import styled from "styled-components";
-import img from "../../Assets/logoconbg-01.png";
 
 export const Bar = styled.div`
+  position: relative;
   min-height: 180px;
-  width: 600px;
+  min-width: 600px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   font-size: small;
   border-radius: 10px;
-  margin-left: 50px;
-  margin-right: 50px;
 `;
 
 export const DivNavBar = styled.div`
+  position: absolute;
   display: flex;
-  justify-content: space-around;
+  justify-content:center;
   align-items: center;
   border-radius: 50px;
   width: 600px;
@@ -26,6 +25,7 @@ export const DivNavBar = styled.div`
   text-shadow: 4px 4px 6px #252525;
   box-shadow: 6px 6px 1px #252525;
   opacity: 90%;
+  left: 50px;
 `;
 
 export const HomeAbout = styled.div`
@@ -36,14 +36,12 @@ export const HomeAbout = styled.div`
   margin-left: 20px;
 `;
 
-export const LogoPoke = styled.div`
-  z-index: 100;
-  background-image: url(${img});
-  background-size: cover;
-  background-repeat: no-repeat;
+export const LogoPoke = styled.img`
+position: absolute;
+
+z-index: 100;
   height: 140px;
   width: 370px;
   border-radius: 50px;
-  position: absolute;
-  right: 0;
+  right: -1200px;
 `;
