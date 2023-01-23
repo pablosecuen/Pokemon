@@ -10,6 +10,7 @@ export const Bar = styled.div`
   width: 100%;
   font-size: small;
   border-radius: 10px;
+  overflow: hidden;
 `;
 
 export const DivNavBar = styled.div`

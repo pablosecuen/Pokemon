@@ -20,7 +20,8 @@ export function Card(props) {
     <CardDiv type={props.type[0]}>
       <DivName>
         <Pname>{props.name}</Pname>
-        <Ptype>{props.type}</Ptype>
+        <Ptype type={props.type[0]}></Ptype>
+        {props.type[1] && <Ptype name="type2" type={props.type[1]}></Ptype>}
       </DivName>
       <div>
         <StyledImg src={props.img} onClick={handleClick} />

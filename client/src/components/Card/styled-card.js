@@ -1,28 +1,5 @@
 import styled from "styled-components";
-
-import fire from "../../Assets/fire.png";
-import flying from "../../Assets/fire.png";
-import grass from "../../Assets/leaf.png";
-import fight from "../../Assets/fight.png";
-import normal from "../../Assets/normal.png";
-import poison from "../../Assets/poison.png";
-import electric from "../../Assets/electric.png";
-import bug from "../../Assets/electric.png";
-import water from "../../Assets/water.png";
-import dragon from "../../Assets/fight.png";
-
-const typeToImage = {
-  fire,
-  grass,
-  fight,
-  normal,
-  poison,
-  electric,
-  bug,
-  water,
-  dragon,
-  flying,
-};
+import { typeToImage, typeToImage1  } from "./assetsImports";
 
 
 export const CardDiv = styled.div`
@@ -54,15 +31,20 @@ export const Pname = styled.p`
   left: 10px;
   top: 8px;
 `;
-export const Ptype = styled.p`
+export const Ptype = styled.div`
+  background-image: url(${({ type }) => typeToImage1[type]});
+  background-size: contain;
+  border: none;
+  height: 30px;
+  width: 30px;
+  border-radius: 50px;
   padding-right: 4px;
   padding-left: 4px;
-  background-color: #cccccc;
   border-radius: 50px;
   border: #252525 solid 2px;
   position: absolute;
   display: inline;
-  right: 10px;
+  right: ${({ name }) => (name ? "40px" : "10px")};
   top: 8px;
 `;
 

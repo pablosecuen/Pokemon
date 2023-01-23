@@ -10,9 +10,14 @@ import {
 import CardsContainer from "../CardsContainer/CardsContainer";
 import img from "../../Assets/Arrow/arrowRight.png";
 import img1 from "../../Assets/Arrow/arrowLeft.png";
+import SearchBar from "../Seachbar/SearchBar";
+import { useEffect } from "react";
+import { getPokemons } from "../../Redux/Actions/Actions";
+import { useDispatch } from "react-redux";
 
 export default function Pagination() {
   const allPokemons = useSelector((state) => state.filteredPokemons);
+  const dispatch = useDispatch();
 
   const count = 12;
   const pageIndex = []; //array de indices pages
@@ -25,6 +30,10 @@ export default function Pagination() {
   for (let i = 1; i <= pokePages; i++) {
     pageIndex.push(i);
   }
+
+  useEffect(() => {
+    dispatch(getPokemons());
+  }, []);
 
   const handleClickArrow = (e) => {
     console.log(e.target.name);
@@ -45,6 +54,7 @@ export default function Pagination() {
 
   return (
     <>
+      <SearchBar></SearchBar>
       <PaginatorContainer>
         <PaginationBar>
           <ArrowL name="-" src={img1} onClick={handleClickArrow} />

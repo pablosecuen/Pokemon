@@ -1,15 +1,14 @@
 import styled from "styled-components";
 
 export const StyledCardContainer = styled.div`
-  height: auto;
-  width: 100%;
+  height: 100vh;
+  width: 90%;
   align-items: flex-start;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   height: auto;
   justify-content: space-evenly;
-  margin: 1.5rem;
   margin-top: 120px;
   margin-bottom: 120px;
 `;

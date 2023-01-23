@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
-export const Form = styled.form`
-  justify-content: center;
+export const Form = styled.div`
+  position: absolute;
+  top: 0;
+  left: 33.4%;
 `;
 
 export const SearchBarStyle = styled.div`
-  margin-left: 50px;
   justify-content: center;
   align-items: center;
   position: absolute;

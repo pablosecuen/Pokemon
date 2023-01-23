@@ -5,6 +5,7 @@ import Home from "./Pages/Home/Home";
 import Detail from "./Pages/Detail/Detail";
 import Create from "./Pages/Create/Create";
 import NavBar from "./components/NavBar/NavBar";
+import Extra from "./Pages/Extra/Extra";
 
 export default function App() {
   const { pathname } = useLocation();
@@ -17,6 +18,7 @@ export default function App() {
         <Route exact path="/home" component={Home} />
         <Route exact path="/detail/:id" component={Detail} />
         <Route exact path="/create" component={Create} />
+        <Route exact path="/extra" component={Extra} />
       </Switch>
     </div>
   );

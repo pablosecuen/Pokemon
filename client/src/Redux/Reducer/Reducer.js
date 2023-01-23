@@ -7,6 +7,7 @@ import {
   GET_POKEMONS,
   GET_TYPES,
   CREATE,
+  FILTER_TWO_TYPES,
 } from "../Actions/Actions";
 
 const initialState = {
@@ -94,6 +95,14 @@ const myPokemons = (state = initialState, actions) => {
         ...state,
         pokemons: [...state.pokemons, actions.payload],
       };
+
+    case FILTER_TWO_TYPES:
+      const { type1, type2 } = actions.payload;
+      const multipleFilter = state.pokemons.filter(
+        (pokemon) =>
+          pokemon.type.includes(type1) && pokemon.type.includes(type2)
+      );
+      return { ...state, filteredPokemons: multipleFilter };
 
     default: {
       return {

@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import validate from "./validate";
+import { Container, Container2, Div, Input, Label } from "./StyledCreate";
 
 export default function Create() {
   const types = useSelector((state) => state.creatorTypes);
@@ -52,72 +53,81 @@ export default function Create() {
         });
     }
   };
-  console.log(types);
+
   return (
-    <form onSubmit={submitHandler}>
-      <div>
-        <label>name</label>
-        <input
-          type="text"
-          value={create.name}
-          onChange={changeHandler}
-          name="name"
-        />
-      </div>
-      <div>
-        <label>hp</label>
-        <input
-          type="text"
-          value={create.hp}
-          onChange={changeHandler}
-          name="hp"
-        />
-      </div>
-      <div>
-        <label>attack</label>
-        <input
-          type="text"
-          value={create.attack}
-          onChange={changeHandler}
-          name="attack"
-        />
-      </div>
-      <div>
-        <label>defense</label>
-        <input
-          type="text"
-          value={create.defense}
-          onChange={changeHandler}
-          name="defense"
-        />
-      </div>
-      <div>
-        <label>weight</label>
-        <input
-          type="text"
-          value={create.weight}
-          onChange={changeHandler}
-          name="weight"
-        />
-      </div>
-      <div>
-        <label>height</label>
-        <input
-          type="text"
-          value={create.height}
-          onChange={changeHandler}
-          name="height"
-        />
-      </div>
-      <div>
-        <select onChange={changeHandler} name="type">
-          <option hidden>seleccionar tipo</option>
-          {types &&
-            types.length > 0 &&
-            types.map((t) => <option value={t}>{t}</option>)}
-        </select>
-      </div>
-      ;<button type="submit">submit</button>
-    </form>
+    <Div>
+      <form onSubmit={submitHandler}>
+        <Container>
+          <div>
+            <Label>name</Label>
+            <Input
+              type="text"
+              value={create.name}
+              onChange={changeHandler}
+              name="name"
+            />
+          </div>
+          <div>
+            <Label>hp</Label>
+            <Input
+              type="text"
+              value={create.hp}
+              onChange={changeHandler}
+              name="hp"
+            />
+          </div>
+          <div>
+            <Label>attack</Label>
+            <Input
+              type="text"
+              value={create.attack}
+              onChange={changeHandler}
+              name="attack"
+            />
+          </div>
+          <div>
+            <Label>defense</Label>
+            <Input
+              type="text"
+              value={create.defense}
+              onChange={changeHandler}
+              name="defense"
+            />
+          </div>
+          <div>
+            <Label>weight</Label>
+            <Input
+              type="text"
+              value={create.weight}
+              onChange={changeHandler}
+              name="weight"
+            />
+          </div>
+          <div>
+            <Label>height</Label>
+            <Input
+              type="text"
+              value={create.height}
+              onChange={changeHandler}
+              name="height"
+            />
+          </div>
+          <div>
+            <select onChange={changeHandler} name="type">
+              <option hidden>seleccionar tipo</option>
+              {types &&
+                types.length > 0 &&
+                types.map((t, index) => (
+                  <option key={index} value={t}>
+                    {t}
+                  </option>
+                ))}
+            </select>
+          </div>
+          ;<button type="submit">submit</button>
+        </Container>
+        <Container2></Container2>
+      </form>
+    </Div>
   );
 }

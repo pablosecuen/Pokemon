@@ -5,7 +5,7 @@ export const ORDER_ASC = "ORDER_ASC";
 export const ORDER_DES = "ORDER_DES";
 export const SEARCH_BY_NAME = "SEARCH_BY_NAME";
 export const SEARCH_BY_ID = "SEARCH_BY_ID";
-export const SEARCH_BY_MULTIPLE_TYPES = "SEARCH_BY_MULTIPLE_TYPES"; //action para filtros mixtos
+export const FILTER_TWO_TYPES = "FILTER_TWO_TYPES"; //action para filtros mixtos
 export const FILTER_BY_TYPE = "FILTER_BY_TYPE";
 export const GET_TYPES = "GET_TYPES";
 export const CREATE = "CREATE";
@@ -39,7 +39,6 @@ export const searchByName = (name) => {
     const response = await axios.get(
       `http://localhost:3001/pokemons?name=${name}`
     );
-    console.log(response.data.name);
     dispatch({
       type: SEARCH_BY_NAME,
       payload: response.data.name,
@@ -56,7 +55,7 @@ export const searchById = (id) => {
 
 export const searchByMultipleTypesFilter = (types1, types2) => {
   return {
-    type: SEARCH_BY_MULTIPLE_TYPES,
+    type: FILTER_TWO_TYPES,
     payload: { types1, types2 },
   };
 };
