@@ -109,6 +109,10 @@ const findByIdApi = async (id) => {
     attack: url.data.stats[1].base_stat,
     defense: url.data.stats[2].base_stat,
     speed: url.data.stats[3].base_stat,
+    abilityOne: url.data.abilities[0].ability.name,
+    abilityTwo: url.data.abilities[1].ability.name,
+    moveOne: url.data.moves[0].move.name,
+    moveTwo: url.data.moves[1].move.name,
     height: url.data.height,
     weight: url.data.weight,
   };
