@@ -1,5 +1,5 @@
 import { FilterModalDiv } from "./StyledModal";
-import FilterType from "./FilterType";
+import FilterType from "../Filter/FilterType";
 
 export default function FilterModal({ active }) {
   return (

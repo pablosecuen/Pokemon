@@ -1,12 +1,12 @@
 import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import { Button, StyledInput, Form, SearchBarStyle } from "./StyledSearchBar";
+import { Button, StyledInput, SearchBarStyle } from "./StyledSearchBar";
 import {
   getPokemons,
   searchByName,
   getTypes,
 } from "../../Redux/Actions/Actions";
-import FilterModal from "../Filter/FilterModal";
+import FilterModal from "./FilterModal";
 
 export default function SearchBar() {
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ export default function SearchBar() {
     setState(e.target.value);
   };
 
-  const onSubmit = (e) => {
+  const onClick1 = (e) => {
     e.preventDefault();
     dispatch(searchByName(state));
   };
@@ -39,19 +39,19 @@ export default function SearchBar() {
 
   return (
     <>
-      <FilterModal active={modalActive}></FilterModal>
-      <Form>
+      <div>
         <SearchBarStyle>
-          <Button >Reset</Button>
+          <Button onClick={onClick}>Reset</Button>
           <StyledInput
             type="text"
             placeholder="Search by name"
             onChange={onChange}
           />
-          <Button>Filter by name</Button>
-          <Button onClick={toggleModal}> Filter by tipe</Button>
+          <Button onClick={onClick1}>Search</Button>
+          <Button onClick={toggleModal}> Filters</Button>
+          <FilterModal active={modalActive}></FilterModal>
         </SearchBarStyle>
-      </Form>
+      </div>
     </>
   );
 }

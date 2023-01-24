@@ -6,6 +6,7 @@ import {
   PaginatorContainer,
   Button,
   PaginationBar,
+  ArrowContainer,
 } from "./StyledPagination";
 import CardsContainer from "../CardsContainer/CardsContainer";
 import img from "../../Assets/Arrow/arrowRight.png";
@@ -54,16 +55,18 @@ export default function Pagination() {
 
   return (
     <>
-      <SearchBar></SearchBar>
       <PaginatorContainer>
         <PaginationBar>
-          <ArrowL name="-" src={img1} onClick={handleClickArrow} />
-          {pageIndex.map((index) => (
-            <Button key={index} value={index} onClick={handleClickButton}>
-              {index}
-            </Button>
-          ))}
-          <ArrowR name="+" src={img} onClick={handleClickArrow} />
+          <SearchBar></SearchBar>
+          <ArrowContainer>
+            <ArrowL name="-" src={img1} onClick={handleClickArrow} />
+            {pageIndex.map((index) => (
+              <Button key={index} value={index} onClick={handleClickButton}>
+                {index}
+              </Button>
+            ))}
+            <ArrowR name="+" src={img} onClick={handleClickArrow} />
+          </ArrowContainer>
         </PaginationBar>
       </PaginatorContainer>
       <CardsContainer pokemons={paginate}></CardsContainer>

@@ -3,7 +3,6 @@ import img from "../../Assets/landingbg.jpg";
 import pika from "../../Assets/pikachu.png";
 
 export const Container = styled.div`
-  border: 5px solid black;
   height: 100vh;
   width: 100vw;
   background-image: url(${img});

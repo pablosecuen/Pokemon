@@ -6,7 +6,7 @@ import {
 } from "../../Redux/Actions/Actions";
 import { H3 } from "../Seachbar/StyledSearchBar";
 import { Button } from "../Seachbar/StyledSearchBar";
-import { Icon } from "./StyledModal";
+import { Icon } from "../Seachbar/StyledModal";
 
 function FilterType() {
   const types = useSelector((state) => state.type);
@@ -14,35 +14,24 @@ function FilterType() {
   const [type2, setType2] = useState("");
   const dispatch = useDispatch();
 
-  // const [activeButton, setActiveButton] = useState([]);
-
-  // const handleClick = (e) => {
-  //   if (activeButton.length < 2) {
-  //     const type = e.target.name; //chequear .name
-  //     const isActive = activeButton.includes(type);
-  //     if (isActive) {
-  //       setActiveButton(activeButton.filter((b) => b !== type));
-  //     } else {
-  //       setActiveButton([...activeButton, type]);
-  //     }
-  //   }
-  // };
-
   const handleTypes = (type) => {
     if (!type1) {
       setType1(type);
     } else if (!type2) {
       setType2(type);
     } else {
-      setType1(type2);
-      setType2(type);
+      setType1(type);
+      setType2(type2);
     }
   };
 
   const handleClick = (event) => {
+    event.preventDefault();
     if (!type2) {
       dispatch(searchByType(type1));
     } else {
+      console.log(type1);
+      console.log(type2);
       dispatch(searchByMultipleTypesFilter(type1, type2));
     }
   };
@@ -57,9 +46,7 @@ function FilterType() {
             name={type.name}
             type={type.name}
             onClick={() => handleTypes(type.name)}
-          >
-            {/* isActive={activeButton.includes(type.name)} */}
-          </Icon>
+          ></Icon>
         ))}
       </form>
 

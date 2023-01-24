@@ -1,25 +1,28 @@
-import { Bar, HomeAbout, DivNavBar } from "./styled-navbar";
+import { Bar, HomeAbout, DivNavBar, Extra, Gif } from "./styled-navbar";
 import { Link } from "react-router-dom";
 import { LogoPoke } from "./styled-navbar";
 import image from "../../Assets/logoconbg-01.png";
-
-
+import gif from "../../Assets/gif/icegif-784.gif";
 
 export default function NavBar() {
   return (
     <Bar>
       <DivNavBar>
         <LogoPoke src={image} />
-        <Link to="/home">
+        <Link to="/home" style={{ textDecoration: "none" }}>
           <HomeAbout>HOME</HomeAbout>
         </Link>
-        <Link to="/about">
+        <Link to="/about" style={{ textDecoration: "none" }}>
           <HomeAbout>ABOUT US</HomeAbout>
         </Link>
-        <Link to="/create">
+        <Link to="/create" style={{ textDecoration: "none" }}>
           <HomeAbout>CREATE YOUR POKEMON</HomeAbout>
         </Link>
       </DivNavBar>
+      <Link to="/extra" style={{ textDecoration: "none" }}>
+        <Extra>Click here for a surprise !</Extra>
+        <Gif src={gif} />
+      </Link>
     </Bar>
   );
 }

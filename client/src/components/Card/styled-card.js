@@ -25,7 +25,6 @@ export const Pname = styled.p`
   padding-left: 12px;
   background-color: #cccccc;
   border-radius: 00px 50px 0px 50px;
-  border: #252525 solid 2px;
   position: absolute;
   display: inline;
   left: 10px;
@@ -41,7 +40,6 @@ export const Ptype = styled.div`
   padding-right: 4px;
   padding-left: 4px;
   border-radius: 50px;
-  border: #252525 solid 2px;
   position: absolute;
   display: inline;
   right: ${({ name }) => (name ? "40px" : "10px")};
@@ -53,7 +51,7 @@ export const Pattack = styled.p`
   padding-left: 12px;
   background-color: #cccccc;
   border-radius: 00px 50px 0px 50px;
-  border: #252525 solid 2px;
+
   position: absolute;
   display: inline;
   left: 3px;
@@ -66,7 +64,6 @@ export const Pdefense = styled.p`
   padding-left: 12px;
   border-radius: 00px 50px 0px 50px;
   background-color: #cccccc;
-  border: #252525 solid 2px;
   position: absolute;
   display: inline;
   right: 2px;

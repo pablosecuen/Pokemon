@@ -63,12 +63,16 @@ export const Icon = styled.button`
 export const Img = styled.div``;
 
 export const FilterModalDiv = styled.div`
-  transition: all 0.3s ease-in-out;
+  z-index: 1000;
+  transition: all 0.5s ease-in-out;
   display: ${({ active }) => (active ? "block" : "none")};
   background-color: yellow;
   position: absolute;
+  top: -4px;
+  right: 0px;
+  margin-top: 4px;
   border-radius: 30px;
   box-shadow: 6px 6px 1px #252525;
-  height: 600px;
-  width: 600px;
+  height:82.5vh;
+  width: 400px;
 `;

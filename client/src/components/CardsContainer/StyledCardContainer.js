@@ -1,9 +1,8 @@
 import styled from "styled-components";
 
 export const StyledCardContainer = styled.div`
-  height: 100vh;
+  height: 120vh;
   width: 90%;
-  align-items: flex-start;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

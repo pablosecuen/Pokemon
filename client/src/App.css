@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  position: relative;
+  position: absolute;
   width: 100%;
   min-height: 95vh;
 }
@@ -22,7 +22,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,6 +34,32 @@
 .App-link {
   color: #61dafb;
 }
+
+
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: #F5F5F5;
+
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #f90a23;
+  background-image: -webkit-linear-gradient(45deg,rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #F5F5F5;
+}
+
+
+::-moz-selection {
+  background-color: #fb4c46;
+  color: #fff; }
+
+::selection {
+  background-color: #FA6862;
+  color: #fff; }
 
 @keyframes App-logo-spin {
   from {

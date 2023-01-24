@@ -2,7 +2,16 @@ import axios from "axios";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import validate from "./validate";
-import { Container, Container2, Div, Input, Label } from "./StyledCreate";
+import {
+  Container,
+  Container2,
+  Div,
+  FormStyle,
+  IMG,
+  Input,
+  Label,
+} from "./StyledCreate";
+import img from "../../Assets/CardsDesign/cardImg-06.png";
 
 export default function Create() {
   const types = useSelector((state) => state.creatorTypes);
@@ -55,8 +64,8 @@ export default function Create() {
   };
 
   return (
-    <Div>
-      <form onSubmit={submitHandler}>
+    <FormStyle onSubmit={submitHandler}>
+      <Div>
         <Container>
           <div>
             <Label>name</Label>
@@ -126,8 +135,10 @@ export default function Create() {
           </div>
           ;<button type="submit">submit</button>
         </Container>
-        <Container2></Container2>
-      </form>
-    </Div>
+        <Container2>
+          <IMG src={img} />
+        </Container2>
+      </Div>
+    </FormStyle>
   );
 }

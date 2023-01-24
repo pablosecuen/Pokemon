@@ -53,10 +53,10 @@ export const searchById = (id) => {
   };
 };
 
-export const searchByMultipleTypesFilter = (types1, types2) => {
+export const searchByMultipleTypesFilter = (type1, type2) => {
   return {
     type: FILTER_TWO_TYPES,
-    payload: { types1, types2 },
+    payload: { type1, type2 },
   };
 };
 
@@ -71,10 +71,10 @@ export const getTypes = () => {
   };
 };
 
-export const searchByType = (type) => {
+export const searchByType = (type1) => {
   return {
     type: FILTER_BY_TYPE,
-    payload: type,
+    payload: type1,
   };
 };
 export const create = (pokemon) => {
