@@ -9,6 +9,8 @@ export const FILTER_TWO_TYPES = "FILTER_TWO_TYPES"; //action para filtros mixtos
 export const FILTER_BY_TYPE = "FILTER_BY_TYPE";
 export const GET_TYPES = "GET_TYPES";
 export const CREATE = "CREATE";
+export const ORDER_POKEMONS_AZ_ZA = "ORDER_POKEMONS_AZ_ZA";
+export const ORDER_POKEMONS_ATTACK = "ORDER_POKEMONS_ATTACK"
 
 export const getPokemons = () => {
   return async (dispatch) => {
@@ -20,17 +22,18 @@ export const getPokemons = () => {
   };
 };
 
-export const orderAsc = (pokemon) => {
+export const OrderPokemonsAttack = (state) => {
   return {
-    type: ORDER_ASC,
-    payload: pokemon,
+    type: ORDER_POKEMONS_ATTACK,
+    payload: state,
   };
 };
 
-export const orderDes = (pokemon) => {
+
+export const OrderPokemonsAZZA = (state) => {
   return {
-    type: ORDER_DES,
-    payload: pokemon,
+    type: ORDER_POKEMONS_AZ_ZA,
+    payload: state,
   };
 };
 

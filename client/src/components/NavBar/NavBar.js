@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { LogoPoke } from "./styled-navbar";
 import image from "../../Assets/logoconbg-01.png";
 import gif from "../../Assets/gif/icegif-784.gif";
+import img from "../../Assets/gameboy.png";
+import { Disclamer, LogoGba } from "../Seachbar/StyledSearchBar";
 
 export default function NavBar() {
   return (
@@ -19,10 +21,11 @@ export default function NavBar() {
           <HomeAbout>CREATE YOUR POKEMON</HomeAbout>
         </Link>
       </DivNavBar>
+      <Disclamer>Click this gba for a sorprise</Disclamer>
       <Link to="/extra" style={{ textDecoration: "none" }}>
-        <Extra>Click here for a surprise !</Extra>
-        <Gif src={gif} />
+        <LogoGba src={img} />
       </Link>
+      <Gif src={gif} />
     </Bar>
   );
 }

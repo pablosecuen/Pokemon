@@ -8,6 +8,8 @@ import {
   GET_TYPES,
   CREATE,
   FILTER_TWO_TYPES,
+  ORDER_POKEMONS_AZ_ZA,
+  ORDER_POKEMONS_ATTACK,
 } from "../Actions/Actions";
 
 const initialState = {
@@ -50,17 +52,38 @@ const myPokemons = (state = initialState, actions) => {
         filteredPokemons: actions.payload,
       };
 
-    case ORDER_ASC:
+    case ORDER_POKEMONS_AZ_ZA:
       return {
         ...state,
-        pokemons: state.pokemons.sort((a, b) => a - b === actions.payload),
+        filteredPokemons: [...state.filteredPokemons].sort((a, b) => {
+          if (actions.payload === "ascendent") {
+            if (a.name < b.name) return -1;
+            if (a.name > b.name) return 1;
+            return 0;
+          } else {
+            if (a.name < b.name) return 1;
+            if (a.name > b.name) return -1;
+            return 0;
+          }
+        }),
       };
 
-    case ORDER_DES:
-      return {
-        ...state,
-        pokemons: state.pokemons.sort((a, b) => b - a === actions.payload),
-      };
+
+      case ORDER_POKEMONS_ATTACK:
+        return {
+          ...state,
+          filteredPokemons: [...state.filteredPokemons].sort((a, b) => {
+            if (actions.payload === "ascendent") {
+              if (a.attack < b.attack) return -1;
+              if (a.attack > b.attack) return 1;
+              return 0;
+            } else {
+              if (a.attack < b.attack) return 1;
+              if (a.attack > b.attack) return -1;
+              return 0;
+            }
+          }),
+        };
 
     case SEARCH_BY_NAME:
       return {

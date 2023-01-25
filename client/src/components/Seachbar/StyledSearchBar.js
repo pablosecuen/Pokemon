@@ -62,3 +62,20 @@ export const H3 = styled.p`
   margin-bottom: 00px;
   font-family: "Press Start 2P";
 `;
+
+export const LogoGba = styled.img`
+  height: 100px;
+  position: absolute;
+  display: inline-block;
+  right: 46.5%;
+  top: 60px;
+`;
+
+export const Disclamer = styled.h3`
+  height: 100px;
+  position: absolute;
+  display: inline-block;
+  right: 44%;
+  top: 40px;
+  font-size: large;
+`;

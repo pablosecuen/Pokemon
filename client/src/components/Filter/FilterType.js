@@ -1,17 +1,21 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  OrderPokemonsAZZA,
   searchByMultipleTypesFilter,
   searchByType,
+  OrderPokemonsAttack,
 } from "../../Redux/Actions/Actions";
 import { H3 } from "../Seachbar/StyledSearchBar";
 import { Button } from "../Seachbar/StyledSearchBar";
 import { Icon } from "../Seachbar/StyledModal";
 
 function FilterType() {
+  const pokemons = useSelector((state) => state.filteredPokemons);
   const types = useSelector((state) => state.type);
   const [type1, setType1] = useState("");
   const [type2, setType2] = useState("");
+  const [state, setState] = useState("");
   const dispatch = useDispatch();
 
   const handleTypes = (type) => {
@@ -25,13 +29,21 @@ function FilterType() {
     }
   };
 
+  const onClickOrd = (e) => {
+    setState(e.target.value);
+    dispatch(OrderPokemonsAZZA(state));
+  };
+
+  const OrderPokemonsAtt = (e) => {
+    setState(e.target.value);
+    dispatch(OrderPokemonsAttack(state));
+  };
+
   const handleClick = (event) => {
     event.preventDefault();
     if (!type2) {
       dispatch(searchByType(type1));
     } else {
-      console.log(type1);
-      console.log(type2);
       dispatch(searchByMultipleTypesFilter(type1, type2));
     }
   };
@@ -52,10 +64,18 @@ function FilterType() {
 
       <div>
         <H3>Order By </H3>
-        <Button>A-Z</Button>
-        <Button>Z-A</Button>
-        <Button>Strongest</Button>
-        <Button>Weakest</Button>
+        <Button onClick={onClickOrd} value="ascendent">
+          Z-A
+        </Button>
+        <Button onClick={onClickOrd} value="descendent">
+          A-Z
+        </Button>
+        <Button onClick={OrderPokemonsAtt} value="ascendent">
+          Strongest
+        </Button>
+        <Button onClick={OrderPokemonsAtt} value="descendent">
+          Weakest
+        </Button>
       </div>
       <div>
         <H3>Select From</H3>
