@@ -13,7 +13,7 @@ export function Card(props) {
   const history = useHistory();
 
   function handleClick() {
-    history.push(`/detail/${props.name}`, { state: { pokemon: props } });
+    history.push(`/detail/${props.id}`, { state: { pokemon: props } });
   }
 
   return (

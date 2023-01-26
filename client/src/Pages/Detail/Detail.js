@@ -1,7 +1,9 @@
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { searchById } from "../../Redux/Actions/Actions";
+
+import { getPokemons, searchById } from "../../Redux/Actions/Actions";
+import { deletePokemon } from "../../Redux/Actions/Actions";
 
 import {
   DetailContainer,
@@ -15,21 +17,32 @@ import {
 
 function Detail() {
   const { id } = useParams();
-  // const [loading, setLoading] = useState(false);
+  const history = useHistory();
   const dispatch = useDispatch();
 
   const pokemon = useSelector((state) => state.pokemonDetail);
 
   useEffect(() => {
     dispatch(searchById(id));
-  });
+  }, []);
 
-  console.log(pokemon);
+  const handleDelete = (id) => {
+    dispatch(deletePokemon(id));
+    alert("The Pokemon has been erased!");
+    dispatch(getPokemons());
+    history.push("/home");
+  };
+
   return (
     <DetailBackground>
       <DetailContainer>
-        <PokedexDisplay1 src={pokemon.img} />
+        <PokedexDisplay1
+          src={pokemon.img ? pokemon.img : "https://via.placeholder.com/150"}
+        />
         <PokedexDisplay2>
+          {typeof id === "string" && (
+            <button onClick={() => handleDelete(id)}>delete</button>
+          )}
           <H3>Type: {pokemon.type}</H3>
           <H3>Name: {pokemon.name}</H3>
           <H3>Id: {pokemon.id}</H3>

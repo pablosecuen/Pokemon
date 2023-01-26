@@ -15,10 +15,12 @@ import SearchBar from "../Seachbar/SearchBar";
 import { useEffect } from "react";
 import { getPokemons } from "../../Redux/Actions/Actions";
 import { useDispatch } from "react-redux";
+import Loading from "../Loading/Loading";
 
 export default function Pagination() {
   const allPokemons = useSelector((state) => state.filteredPokemons);
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(true);
 
   const count = 12;
   const pageIndex = []; //array de indices pages
@@ -34,6 +36,9 @@ export default function Pagination() {
 
   useEffect(() => {
     dispatch(getPokemons());
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
   }, []);
 
   const handleClickArrow = (e) => {
@@ -55,21 +60,28 @@ export default function Pagination() {
 
   return (
     <>
-      <PaginatorContainer>
-        <PaginationBar>
-          <SearchBar></SearchBar>
-          <ArrowContainer>
-            <ArrowL name="-" src={img1} onClick={handleClickArrow} />
-            {pageIndex.map((index) => (
-              <Button key={index} value={index} onClick={handleClickButton}>
-                {index}
-              </Button>
-            ))}
-            <ArrowR name="+" src={img} onClick={handleClickArrow} />
-          </ArrowContainer>
-        </PaginationBar>
-      </PaginatorContainer>
-      <CardsContainer pokemons={paginate}></CardsContainer>
+      {" "}
+      {loading ? (
+        <Loading />
+      ) : (
+        <>
+          <PaginatorContainer>
+            <PaginationBar>
+              <SearchBar></SearchBar>
+              <ArrowContainer>
+                <ArrowL name="-" src={img1} onClick={handleClickArrow} />
+                {pageIndex.map((index) => (
+                  <Button key={index} value={index} onClick={handleClickButton}>
+                    {index}
+                  </Button>
+                ))}
+                <ArrowR name="+" src={img} onClick={handleClickArrow} />
+              </ArrowContainer>
+            </PaginationBar>
+          </PaginatorContainer>
+          <CardsContainer pokemons={paginate}></CardsContainer>
+        </>
+      )}
     </>
   );
 }

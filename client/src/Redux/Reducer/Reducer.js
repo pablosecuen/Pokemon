@@ -1,6 +1,4 @@
 import {
-  ORDER_ASC,
-  ORDER_DES,
   SEARCH_BY_NAME,
   SEARCH_BY_ID,
   FILTER_BY_TYPE,
@@ -10,6 +8,8 @@ import {
   FILTER_TWO_TYPES,
   ORDER_POKEMONS_AZ_ZA,
   ORDER_POKEMONS_ATTACK,
+  UPDATE_POKEMON,
+  DELETE_POKEMON,
 } from "../Actions/Actions";
 
 const initialState = {
@@ -68,22 +68,21 @@ const myPokemons = (state = initialState, actions) => {
         }),
       };
 
-
-      case ORDER_POKEMONS_ATTACK:
-        return {
-          ...state,
-          filteredPokemons: [...state.filteredPokemons].sort((a, b) => {
-            if (actions.payload === "ascendent") {
-              if (a.attack < b.attack) return -1;
-              if (a.attack > b.attack) return 1;
-              return 0;
-            } else {
-              if (a.attack < b.attack) return 1;
-              if (a.attack > b.attack) return -1;
-              return 0;
-            }
-          }),
-        };
+    case ORDER_POKEMONS_ATTACK:
+      return {
+        ...state,
+        filteredPokemons: [...state.filteredPokemons].sort((a, b) => {
+          if (actions.payload === "ascendent") {
+            if (a.attack < b.attack) return -1;
+            if (a.attack > b.attack) return 1;
+            return 0;
+          } else {
+            if (a.attack < b.attack) return 1;
+            if (a.attack > b.attack) return -1;
+            return 0;
+          }
+        }),
+      };
 
     case SEARCH_BY_NAME:
       return {
@@ -126,6 +125,28 @@ const myPokemons = (state = initialState, actions) => {
           pokemon.type.includes(type1) && pokemon.type.includes(type2)
       );
       return { ...state, filteredPokemons: multipleFilter };
+
+    case UPDATE_POKEMON:
+      return {
+        filteredPokemons: state.pokemons.map((pokemon) => {
+          if (pokemon.id === actions.id) {
+            return {
+              ...pokemon,
+              ...actions.updates,
+            };
+          } else {
+            return pokemon;
+          }
+        }),
+      };
+
+    case DELETE_POKEMON:
+      return {
+        ...state,
+        filteredPokemons: state.pokemons.filter(
+          (pokemon) => pokemon.id !== actions.id
+        ),
+      };
 
     default: {
       return {

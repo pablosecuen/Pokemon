@@ -10,7 +10,9 @@ export const FILTER_BY_TYPE = "FILTER_BY_TYPE";
 export const GET_TYPES = "GET_TYPES";
 export const CREATE = "CREATE";
 export const ORDER_POKEMONS_AZ_ZA = "ORDER_POKEMONS_AZ_ZA";
-export const ORDER_POKEMONS_ATTACK = "ORDER_POKEMONS_ATTACK"
+export const ORDER_POKEMONS_ATTACK = "ORDER_POKEMONS_ATTACK";
+export const UPDATE_POKEMON = "UPDATE_POKEMON";
+export const DELETE_POKEMON = "DELETE_POKEMON";
 
 export const getPokemons = () => {
   return async (dispatch) => {
@@ -28,7 +30,6 @@ export const OrderPokemonsAttack = (state) => {
     payload: state,
   };
 };
-
 
 export const OrderPokemonsAZZA = (state) => {
   return {
@@ -85,5 +86,20 @@ export const create = (pokemon) => {
   return {
     type: CREATE,
     payload: pokemon,
+  };
+};
+
+export const updatePokemon = (id, updates) => {
+  return {
+    type: UPDATE_POKEMON,
+    id,
+    updates,
+  };
+};
+
+export const deletePokemon = (id) => {
+  return async function (dispatch) {
+    await axios.delete(`http://localhost:3001/pokemons/${id}`);
+    return dispatch({ type: DELETE_POKEMON });
   };
 };

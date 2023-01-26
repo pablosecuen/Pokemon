@@ -7,7 +7,7 @@ const urlTypes = `https://pokeapi.co/api/v2/type`;
 //pokecontrollers for api
 
 const findAllApi = async () => {
-  const api = await axios.get(urlPokemon + `?limit=20`);
+  const api = await axios.get(urlPokemon + `?limit=100`);
   const pokeUrl = [];
   api.data.results.map((r) => {
     pokeUrl.push(axios.get(r.url).then((response) => response.data));
@@ -138,6 +138,32 @@ const getTypesApi = async () => {
   return typeNames;
 };
 
+const deletePokemon = async (id) => {
+  try {
+    const pokemon = await Pokemon.findByPk(id);
+    if (!pokemon) {
+      throw new Error("Pokemon not found");
+    }
+    await pokemon.destroy();
+    return { message: "Pokemon deleted successfully" };
+  } catch (error) {
+    throw error;
+  }
+};
+
+const updatePokemon = async (id, updates) => {
+  try {
+    const pokemon = await Pokemon.findByPk(id);
+    if (!pokemon) {
+      throw new Error("Pokemon not found");
+    }
+    await pokemon.update(updates);
+    return pokemon;
+  } catch (error) {
+    throw error;
+  }
+};
+
 module.exports = {
   findByIdApi,
   findByName,
@@ -145,4 +171,6 @@ module.exports = {
   findAllPokemon,
   createPokemon,
   findById,
+  deletePokemon,
+  updatePokemon,
 };

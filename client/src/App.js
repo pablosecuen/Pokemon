@@ -6,6 +6,7 @@ import Detail from "./Pages/Detail/Detail";
 import Create from "./Pages/Create/Create";
 import NavBar from "./components/NavBar/NavBar";
 import Extra from "./Pages/Extra/Extra";
+import NotFound from "./components/NotFound/NotFound";
 
 export default function App() {
   const { pathname } = useLocation();
@@ -19,6 +20,7 @@ export default function App() {
         <Route exact path="/detail/:id" component={Detail} />
         <Route exact path="/create" component={Create} />
         <Route exact path="/extra" component={Extra} />
+        <Route component={NotFound} />
       </Switch>
     </div>
   );

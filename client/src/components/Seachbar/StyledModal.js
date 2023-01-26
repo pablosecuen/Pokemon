@@ -73,6 +73,15 @@ export const FilterModalDiv = styled.div`
   margin-top: 4px;
   border-radius: 30px;
   box-shadow: 6px 6px 1px #252525;
-  height:82.5vh;
+  height: 82.5vh;
   width: 400px;
+  animation: a7 0.5s linear alternate;
+  @keyframes a7 {
+    0% {
+      transform: translate(500px);
+    }
+    100% {
+      transform: translate();
+    }
+  }
 `;

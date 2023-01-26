@@ -68,7 +68,7 @@ export const LogoGba = styled.img`
   position: absolute;
   display: inline-block;
   right: 46.5%;
-  top: 60px;
+  top: 50px;
 `;
 
 export const Disclamer = styled.h3`
