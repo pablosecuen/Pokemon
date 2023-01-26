@@ -19,13 +19,13 @@ import Loading from "../Loading/Loading";
 
 export default function Pagination() {
   const allPokemons = useSelector((state) => state.filteredPokemons);
-  const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [page, setPage] = useState(1);
 
+  const dispatch = useDispatch();
   const count = 12;
   const pageIndex = []; //array de indices pages
-
-  const [page, setPage] = useState(1);
 
   const pokePages = Math.ceil(allPokemons.length / count);
   const paginate = allPokemons.slice((page - 1) * count, page * count);
@@ -46,16 +46,19 @@ export default function Pagination() {
     if (e.target.name === "-") {
       if (page > 1) {
         setPage(page - 1);
+        setCurrentPage(page - 1);
       }
     } else {
       if (page < pokePages) {
         setPage(page + 1);
+        setCurrentPage(page + 1);
       }
     }
   };
 
   const handleClickButton = (e) => {
     setPage(e.target.value);
+    setCurrentPage(e.target.value);
   };
 
   return (
@@ -70,8 +73,14 @@ export default function Pagination() {
               <SearchBar></SearchBar>
               <ArrowContainer>
                 <ArrowL name="-" src={img1} onClick={handleClickArrow} />
+                {currentPage}
                 {pageIndex.map((index) => (
-                  <Button key={index} value={index} onClick={handleClickButton}>
+                  <Button
+                    key={index}
+                    value={index}
+                    onClick={handleClickButton}
+                    style={index === currentPage ? { color: "red" } : {}}
+                  >
                     {index}
                   </Button>
                 ))}

@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   OrderPokemonsAZZA,
   searchByMultipleTypesFilter,
   searchByType,
   OrderPokemonsAttack,
+  getPokemons,
 } from "../../Redux/Actions/Actions";
 import { H3 } from "../Seachbar/StyledSearchBar";
 import { Button } from "../Seachbar/StyledSearchBar";
@@ -12,11 +13,16 @@ import { Icon } from "../Seachbar/StyledModal";
 
 function FilterType() {
   const pokemons = useSelector((state) => state.filteredPokemons);
+  const pokemonsDb = useSelector((state) => state.pokemons);
   const types = useSelector((state) => state.type);
   const [type1, setType1] = useState("");
   const [type2, setType2] = useState("");
   const [state, setState] = useState("");
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getPokemons());
+  }, []);
 
   const handleTypes = (type) => {
     if (!type1) {
@@ -47,6 +53,14 @@ function FilterType() {
       dispatch(searchByMultipleTypesFilter(type1, type2));
     }
   };
+
+  const handleClickAPI = () => {
+    dispatch(getPokemons());
+  };
+
+  // const handleClickDB = () => {
+  //   dispatch(getPokemonsFromDB());
+  // }
 
   return (
     <div>
@@ -80,7 +94,7 @@ function FilterType() {
       <div>
         <H3>Select From</H3>
         <Button>Data Base</Button>
-        <Button>Api</Button>
+        <Button onClick={handleClickAPI}>Api</Button>
       </div>
     </div>
   );

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import validate from "./validate";
 import {
+  Button,
   Container,
   Container2,
   Div,
@@ -10,6 +11,7 @@ import {
   IMG,
   Input,
   Label,
+  Select,
 } from "./StyledCreate";
 import img from "../../Assets/CardsDesign/cardImg-06.png";
 
@@ -122,8 +124,8 @@ export default function Create() {
             />
           </div>
           <div>
-            <select onChange={changeHandler} name="type">
-              <option hidden>seleccionar tipo</option>
+            <Select onChange={changeHandler} name="type">
+              <option hidden>select type</option>
               {types &&
                 types.length > 0 &&
                 types.map((t, index) => (
@@ -131,9 +133,9 @@ export default function Create() {
                     {t}
                   </option>
                 ))}
-            </select>
+            </Select>
           </div>
-          ;<button type="submit">submit</button>
+          ;<Button type="submit">submit</Button>
         </Container>
         <Container2>
           <IMG src={img} />

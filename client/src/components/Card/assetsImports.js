@@ -1,13 +1,23 @@
 import fire from "../../Assets/CardsDesign/fire.png";
 import flying from "../../Assets/CardsDesign/fire.png";
 import grass from "../../Assets/CardsDesign/leaf.png";
-import fight from "../../Assets/CardsDesign/fight.png";
+import fighting from "../../Assets/CardsDesign/fight.png";
 import normal from "../../Assets/CardsDesign/normal.png";
 import poison from "../../Assets/CardsDesign/poison.png";
 import electric from "../../Assets/CardsDesign/electric.png";
 import bug from "../../Assets/CardsDesign/electric.png";
 import water from "../../Assets/CardsDesign/water.png";
 import dragon from "../../Assets/CardsDesign/fight.png";
+import dark from "../../Assets/CardsDesign/poison.png";
+import fairy from "../../Assets/CardsDesign/normal.png";
+import ghost from "../../Assets/CardsDesign/normal.png";
+import ground from "../../Assets/CardsDesign/electric.png";
+import ice from "../../Assets/CardsDesign/water.png";
+import shadow from "../../Assets/CardsDesign/poison.png";
+import steel from "../../Assets/CardsDesign/normal.png";
+import psychic from "../../Assets/CardsDesign/electric.png";
+import unkown from "../../Assets/CardsDesign/fight.png";
+import rock from "../../Assets/CardsDesign/electric.png";
 
 import fire1 from "../../Assets/types/Fire.png";
 import water1 from "../../Assets/types/Water.png";
@@ -33,7 +43,7 @@ import unknown1 from "../../Assets/types/Unknown.png";
 export const typeToImage = {
   fire,
   grass,
-  fight,
+  fighting,
   normal,
   poison,
   electric,
@@ -41,6 +51,17 @@ export const typeToImage = {
   water,
   dragon,
   flying,
+  dark,
+  fairy,
+  ghost,
+  ground,
+  ice,
+  shadow,
+  steel,
+  psychic,
+  unkown,
+  fighting,
+  rock,
 };
 
 export const typeToImage1 = {

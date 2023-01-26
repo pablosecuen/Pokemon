@@ -1,12 +1,19 @@
+
+import guia from "../../Assets/game/guia.png";
+import { GameContainer, Guia } from "./styledExtra";
+
 export default function Extra() {
   return (
-    <div>
+    <GameContainer>
       <iframe
         title="gbajs"
         src="./gbajs/index.html"
         width="1800px"
         height="900px"
       />
-    </div>
+      <div>
+        <Guia src={guia} />
+      </div>
+    </GameContainer>
   );
 }
