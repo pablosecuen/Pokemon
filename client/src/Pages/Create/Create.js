@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+
 import validate from "./validate";
 import {
   Button,
@@ -14,8 +15,10 @@ import {
   Select,
 } from "./StyledCreate";
 import img from "../../Assets/CardsDesign/cardImg-06.png";
+import { useHistory } from "react-router-dom";
 
 export default function Create() {
+  const history = useHistory();
   const types = useSelector((state) => state.creatorTypes);
   const [create, setCreate] = useState({
     name: "",
@@ -30,7 +33,6 @@ export default function Create() {
   const changeHandler = (event) => {
     const property = event.target.name;
     const value = event.target.value;
-    // if (property === "type") value = value.split(",");
     if (property === "type") {
       setCreate({ ...create, [property]: [value] });
     } else {
@@ -57,10 +59,11 @@ export default function Create() {
             height: "",
             type: "",
           });
-          alert("pokemon fue creado exitosamente");
+          alert("pokewachito was successfully saved");
+          history.push("/home");
         })
         .catch((error) => {
-          alert("pokewachito no fue creado");
+          alert("pokewachito wasn't created");
         });
     }
   };

@@ -35,9 +35,9 @@ export const PokedexDisplay2 = styled.div`
   text-align: left;
   display: block;
   position: absolute;
-  font-size: smaller;
+  font-size: x-small;
   right: 31%;
-  top: 32.5%;
+  top: 34.5%;
   height: 20%;
   width: 14%;
 `;

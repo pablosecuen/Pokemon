@@ -89,12 +89,11 @@ export const create = (pokemon) => {
   };
 };
 
-export const updatePokemon = (id, updates) => {
-  return {
+export const updatePokemon = (pokemon) => (dispatch) => {
+  dispatch({
     type: UPDATE_POKEMON,
-    id,
-    updates,
-  };
+    payload: pokemon,
+  });
 };
 
 export const deletePokemon = (id) => {

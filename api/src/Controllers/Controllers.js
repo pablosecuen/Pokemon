@@ -35,7 +35,14 @@ const findAllApi = async () => {
   return await pokeProps; //retornamos el objeto con sus propiedades
 };
 
-const findByName = async (name) => {
+const findByNameDb = async (name) => {
+  const pokemon = await Pokemon.findOne({
+    where: { name: name },
+  });
+  return pokemon;
+};
+
+const findByNameApi = async (name) => {
   // lista
   try {
     const byName = await Pokemon.findOne({
@@ -43,7 +50,6 @@ const findByName = async (name) => {
         name,
       },
     });
-
     const response = await axios.get(urlPokemon + "/" + name);
     return {
       id: response.data.id,
@@ -94,31 +100,35 @@ const findAllPokemon = async () => {
 };
 
 const findById = async (id) => {
-  const pokemon = await Pokemon.findByPk(id);
+  const pokemon = await Pokemon.findOne({
+    where: { id: id },
+  });
   return pokemon;
 };
 
 const findByIdApi = async (id) => {
-  const url = await axios.get(urlPokemon + "/" + id);
-  return {
-    id: url.data.id,
-    name: url.data.name,
-    type: url.data.types.map((el) => el.type.name),
-    img: url.data.sprites.other.dream_world.front_default,
-    hp: url.data.stats[0].base_stat,
-    attack: url.data.stats[1].base_stat,
-    defense: url.data.stats[2].base_stat,
-    speed: url.data.stats[3].base_stat,
-    abilityOne: url.data.abilities[0].ability.name,
-    abilityTwo: url.data.abilities[1].ability.name,
-    moveOne: url.data.moves[0].move.name,
-    moveTwo: url.data.moves[1].move.name,
-    height: url.data.height,
-    weight: url.data.weight,
-  };
+  try {
+    const url = await axios.get(urlPokemon + `/` + id);
+    return {
+      id: url.data.id,
+      name: url.data.name,
+      type: url.data.types.map((el) => el.type.name),
+      img: url.data.sprites.other.dream_world.front_default,
+      hp: url.data.stats[0].base_stat,
+      attack: url.data.stats[1].base_stat,
+      defense: url.data.stats[2].base_stat,
+      speed: url.data.stats[3].base_stat,
+      abilityOne: url.data.abilities[0].ability.name,
+      abilityTwo: url.data.abilities[1].ability.name,
+      moveOne: url.data.moves[0].move.name,
+      moveTwo: url.data.moves[1].move.name,
+      height: url.data.height,
+      weight: url.data.weight,
+    };
+  } catch (error) {
+    return { error: "Pokemon not found" };
+  }
 };
-
-//types controller
 
 const getTypesApi = async () => {
   const response = await axios.get(urlTypes);
@@ -151,13 +161,16 @@ const deletePokemon = async (id) => {
   }
 };
 
-const updatePokemon = async (id, updates) => {
+const updatePokemon = async (
+  id,
+  { name, hp, attack, defense, height, weight, type }
+) => {
   try {
     const pokemon = await Pokemon.findByPk(id);
     if (!pokemon) {
       throw new Error("Pokemon not found");
     }
-    await pokemon.update(updates);
+    await pokemon.update({ name, hp, attack, defense, height, weight, type });
     return pokemon;
   } catch (error) {
     throw error;
@@ -166,7 +179,8 @@ const updatePokemon = async (id, updates) => {
 
 module.exports = {
   findByIdApi,
-  findByName,
+  findByNameApi,
+  findByNameDb,
   getTypesApi,
   findAllPokemon,
   createPokemon,

@@ -20,3 +20,14 @@ describe('Pokemon model', () => {
     });
   });
 });
+
+const assert = require('assert');
+const PokemonModel = require('path/to/pokemon.model');
+
+describe('PokemonModel', () => {
+    it('should create a new Pokemon', () => {
+        const poke = new PokemonModel({ name: 'Pikachu', type: 'Electric' });
+        assert.strictEqual(poke.name, 'Pikachu');
+        assert.strictEqual(poke.type, 'Electric');
+    });
+});

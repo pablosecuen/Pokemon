@@ -1,10 +1,9 @@
-import { useEffect } from "react";
+import Editable from "../../components/Editable/Editable";
+import { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-
 import { getPokemons, searchById } from "../../Redux/Actions/Actions";
 import { deletePokemon } from "../../Redux/Actions/Actions";
-
 import {
   DetailContainer,
   DetailBackground,
@@ -14,12 +13,13 @@ import {
   PokedexLightYellow,
   H3,
 } from "./styledDetail";
+import { ButDel, ButEdit } from "../../components/Editable/StyledEditable";
 
 function Detail() {
   const { id } = useParams();
   const history = useHistory();
   const dispatch = useDispatch();
-
+  const [showEditModal, setShowEditModal] = useState(false);
   const pokemon = useSelector((state) => state.pokemonDetail);
 
   useEffect(() => {
@@ -33,6 +33,10 @@ function Detail() {
     history.push("/home");
   };
 
+  const handleEdit = () => {
+    setShowEditModal(!showEditModal);
+  };
+
   return (
     <DetailBackground>
       <DetailContainer>
@@ -41,8 +45,12 @@ function Detail() {
         />
         <PokedexDisplay2>
           {typeof id === "string" && (
-            <button onClick={() => handleDelete(id)}>delete</button>
+            <ButDel onClick={() => handleDelete(id)}>Del</ButDel>
           )}
+          {pokemon.id && !pokemon.isCustom && (
+            <ButEdit onClick={handleEdit}>Edit</ButEdit>
+          )}
+          {showEditModal && <Editable pokemon1={pokemon} id={id}></Editable>}
           <H3>Type: {pokemon.type}</H3>
           <H3>Name: {pokemon.name}</H3>
           <H3>Id: {pokemon.id}</H3>

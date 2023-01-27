@@ -1,10 +1,11 @@
 const {
   createPokemon,
   findAllPokemon,
-  findByName,
+  findByNameApi,
   findByIdApi,
   findById,
   updatePokemon,
+  findByNameDb,
   deletePokemon,
 } = require("../Controllers/Controllers");
 
@@ -30,15 +31,30 @@ const createPokemonHandler = async (req, res) => {
 const getPokemonHandler = async (req, res) => {
   const { name } = req.query;
 
-  const results = name ? await findByName(name) : await findAllPokemon();
-
-  res.status(200).json(results);
+  let pokemon;
+  try {
+    if (name) {
+      pokemon = await findByNameApi(name);
+      if (pokemon.error) {
+        pokemon = await findByNameDb(name);
+      }
+    } else {
+      pokemon = await findAllPokemon();
+    }
+    res.status(200).json(pokemon);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 };
 
 const getPokemonByIdHandler = async (req, res) => {
   const { id } = req.params;
   try {
-    const pokemon = id ? await findByIdApi(id) : await findById(id);
+    let pokemon;
+    pokemon = await findByIdApi(id);
+    if (pokemon.error) {
+      pokemon = await findById(id);
+    }
     res.status(200).json(pokemon);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -56,10 +72,18 @@ const deletePokemonHandler = async (req, res) => {
 };
 
 const updatePokemonHandler = async (req, res) => {
-  const { id } = req.params;
-  const updates = req.body;
+  let { id } = req.params;
+  let { name, attack, weight, height, defense, hp, type } = req.body;
   try {
-    const updatedPokemon = await updatePokemon(id, updates);
+    const updatedPokemon = await updatePokemon(id, {
+      name,
+      attack,
+      weight,
+      height,
+      defense,
+      hp,
+      type,
+    });
     res.status(200).json(updatedPokemon);
   } catch (error) {
     res.status(400).json({ error: error.message });
