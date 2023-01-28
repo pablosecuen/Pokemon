@@ -1,3 +1,4 @@
+
 import guia from "../../Assets/game/guia.png";
 import { GameContainer, Guia } from "./styledExtra";
 
@@ -5,8 +6,8 @@ export default function Extra() {
   return (
     <GameContainer>
       <iframe
-        title="gbajs1"
-        src="./gbajs1/index.html"
+        title="gbajs"
+        src="./gbajs/index.html"
         width="1800px"
         height="900px"
       />

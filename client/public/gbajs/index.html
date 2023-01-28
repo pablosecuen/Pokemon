@@ -58,11 +58,11 @@ window.onload = function() {
 			gba.setBios(bios);
 		});
 
-		if (!gba.audio.context) {
-			// Remove the sound box if sound isn't available
-			var soundbox = document.getElementById('sound');
-			soundbox.parentElement.removeChild(soundbox);
-		}
+		// if (!gba.audio.context) {
+		// 	// Remove the sound box if sound isn't available
+		// 	var soundbox = document.getElementById('sound');
+		// 	soundbox.parentElement.removeChild(soundbox);
+		// }
 
 		if (window.navigator.appName == 'Microsoft Internet Explorer') {
 			// Remove the pixelated option if it doesn't work
