@@ -24,6 +24,8 @@ export const getPokemons = () => {
   };
 };
 
+
+
 export const OrderPokemonsAttack = (state) => {
   return {
     type: ORDER_POKEMONS_ATTACK,

@@ -4,8 +4,9 @@ import Landing from "./Pages/Landing/Landing";
 import Home from "./Pages/Home/Home";
 import Detail from "./Pages/Detail/Detail";
 import Create from "./Pages/Create/Create";
-import NavBar from "./components/NavBar/NavBar";
 import Extra from "./Pages/Extra/Extra";
+import About from "./Pages/About/About";
+import NavBar from "./components/NavBar/NavBar";
 import NotFound from "./components/NotFound/NotFound";
 
 export default function App() {

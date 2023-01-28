@@ -76,6 +76,26 @@ export const Disclamer = styled.h3`
   position: absolute;
   display: inline-block;
   right: 44%;
-  top: 40px;
+  top: 30px;
   font-size: large;
+
+  animation-name: stretch;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+
+  @keyframes stretch {
+    0% {
+      transform: scale(1);
+    }
+
+    50% {
+    }
+
+    100% {
+      transform: scale(1.2);
+    }
+  }
 `;
